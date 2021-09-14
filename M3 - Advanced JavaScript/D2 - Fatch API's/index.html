@@ -17,7 +17,11 @@
     <h1>Hello, worldsdsds</h1>
 
     <div class="container">
-        <div class="row"></div>
+        <div class="row">
+            <div class="col-4">
+
+            </div>
+        </div>
     </div>
 
 
@@ -31,15 +35,11 @@
                 .then(response => response.json())
 
                 .then(body => {
-                    let row = document.querySelector('.row')
-
-                    console.log(body.results)
-                    for (let i = 0; i < body.results.length; i++) {
-                        let item = body.results['name']
-                        console.log(item)
-                    }
-
-
+                    let col = document.querySelector('.col-4')
+                    console.log(body.results[0].picture.medium)
+                    let img = document.createElement('img')
+                    img.src = body.results[0].picture.medium
+                    col.appendChild(img)
 
                 })
         }
