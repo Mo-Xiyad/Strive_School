@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!-- saved from url=(0436)https://s3.eu-west-1.amazonaws.com/eduflow-production/activity-resources/122888252920788.html?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA2TAWW44RCEE6YREN%2F20210914%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20210914T102532Z&X-Amz-Expires=600&X-Amz-SignedHeaders=host&response-content-disposition=inline%3B%20filename%2A%3DUTF-8%27%27index.html&X-Amz-Signature=91024cb80ab15702c81ad776016fd7aa9a27b5fc283254d95ccfe5dabeddcab3 -->
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Required meta tags -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./Strive books_files/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <title>Strive books</title>
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1028.0" data-gr-ext-installed="">
+    <h1>Strive books!</h1>
+    <button class="btn btn-primary" onclick="loadBooks()">Load books</button>
+    <div class="container">
+        <div class="row"></div>
+    </div>
+
+
+    <script src="./Strive books_files/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="./Strive books_files/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+    <script>
+        const loadBooks = () => {
+
+            fetch("https://striveschool-api.herokuapp.com/books")
+
+                // WAITING
+                .then(response => response.json()
+                )
+                .then(body => {
+
+                    // DOM MANIPULATION
+                    console.log(body)
+
+                    const row = document.querySelector(".row")
+
+                    for (let i = 0; i < body.length; i++) {
+                        const obj = body[i]
+
+                        const col = document.createElement("div")
+                        col.className = "col-3"
+
+                        col.innerHTML = `
+                        
+                        <div class="card">
+                            <img src="${obj.img}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">${obj.title}</h5>
+                                <p class="card-text">${obj.price}€</p>
+                            </div>
+                        </div>
+                        `
+
+                        row.appendChild(col)
+                    }
+
+
+                })
+                .catch(error => console.error(error))
+
+        }
+    </script>
+
+
+
+</body>
+<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+
+</html>
