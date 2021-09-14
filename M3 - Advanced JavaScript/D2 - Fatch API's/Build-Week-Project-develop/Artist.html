@@ -57,12 +57,22 @@
                                     d="M448 463.746h-149.333v-149.333h-85.334v149.333h-149.333v-315.428l192-111.746 192 110.984v316.19z"
                                     fill="currentColor"></path>
                             </svg></span> Home</a></li>
-                <li><a class="" href="#contact"> <span class="pr-2"><svg viewBox="0 0 512 512" width="24" height="24"
+                <!-- <li><a class="" href="#contact"> <span class="pr-2"><svg viewBox="0 0 512 512" width="24" height="24"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M349.714 347.937l93.714 109.969-16.254 13.969-93.969-109.969q-48.508 36.825-109.207 36.825-36.826 0-70.476-14.349t-57.905-38.603-38.603-57.905-14.349-70.476 14.349-70.476 38.603-57.905 57.905-38.603 70.476-14.349 70.476 14.349 57.905 38.603 38.603 57.905 14.349 70.476q0 37.841-14.73 71.619t-40.889 58.921zM224 377.397q43.428 0 80.254-21.461t58.286-58.286 21.461-80.254-21.461-80.254-58.286-58.285-80.254-21.46-80.254 21.46-58.285 58.285-21.46 80.254 21.46 80.254 58.285 58.286 80.254 21.461z"
                                     fill="currentColor" fill-rule="evenodd"></path>
-                            </svg></span> Search</a></li>
+                            </svg></span> Search</a></li> -->
+                <li>
+                    <span onclick="doSearch()" class="ml-3"><svg viewBox="0 0 512 512" width="24" height="24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M349.714 347.937l93.714 109.969-16.254 13.969-93.969-109.969q-48.508 36.825-109.207 36.825-36.826 0-70.476-14.349t-57.905-38.603-38.603-57.905-14.349-70.476 14.349-70.476 38.603-57.905 57.905-38.603 70.476-14.349 70.476 14.349 57.905 38.603 38.603 57.905 14.349 70.476q0 37.841-14.73 71.619t-40.889 58.921zM224 377.397q43.428 0 80.254-21.461t58.286-58.286 21.461-80.254-21.461-80.254-58.286-58.285-80.254-21.46-80.254 21.46-58.285 58.285-21.46 80.254 21.46 80.254 58.285 58.286 80.254 21.461z"
+                                fill="currentColor" fill-rule="evenodd"></path>
+                        </svg></span>
+                    <input class="" type="search" placeholder="search on deezer...">
+                    <!-- <button class="btn btn-primary" onclick="doSearch()">search</button> -->
+                </li>
                 <li><a class="" href="#about"> <span class="pr-2"><svg viewBox="0 0 512 512" width="24" height="24"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -297,51 +307,18 @@
         <div class="container col-12 ml-3">
             <div class="row">
                 <div class="col-12">
-                    <p style="font-size: 12px;">SEE MORE</p>
+                    <button onclick="moreMusic()" class="btn btn-secondary" style="font-size: 12px;">SEE MORE</button>
                 </div>
             </div>
         </div>
 
 
-        <div class="pl-2 mt-3">
-            <h4>Popular releases</h4>
-            <div class="row">
 
-                <!--Cards -->
-
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 px-1 mb-2">
-                    <a href="./Album.html" class='card-link'>
-                        <div class="card pt-2 rp-card">
-                            <img class="recent-ply-card-img ml-3 pl-2"
-                                src="data:image/jpeg;base64,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"
-                                alt="Card image cap">
-                            <div class="card-body card-text-paragraph">
-                                <p class="pb-0 mb-1">Beyonce</p>
-                                <small>lkadsdjlaskdjoejodsadmlewdjsadkj</small>
-                            </div>
-                            <div class="details">
-                                <div class="center">
-                                    <p>In here you can find all the infomation you want to know abut the Artist or the
-                                        Album. </p>
-                                    <ul>
-                                        <li><a href="#"><i class="bi bi-facebook" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="bi bi-twitter" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!--  -->
-
-            </div>
-        </div>
 
 
         <div class="pl-2 mt-3">
             <h4>Albums</h4>
-            <div id='fect-songs-Api' class="row">
+            <div id='fect-songs-Api' class="row" style="flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden;">
 
                 <!--Cards -->
 
@@ -421,8 +398,7 @@
         </div>
     </footer>
 
-    <input type="search" placeholder="search on deezer...">
-    <button onclick="doSearch()">search</button>
+
 
 
 
@@ -439,6 +415,39 @@
 
     <script>
         // const song 
+
+        function moreMusic() {
+            const query = document.querySelector("input[type=search]").value
+            getArtist(query)
+                .then(data => data.json())
+                .then(body => {
+                    let table = document.querySelector('table tbody')
+                    table.innerHTML = ''
+                    for (let i = 0; i < body.data.length; i++) {
+                        let songs = body.data[i]
+                        console.log(songs)
+
+                        let tr = document.createElement('tr')
+
+                        tr.innerHTML = `     <th scope="row">2</th>
+                                             <td><img style="width:50px; height:50px;"
+                                                 src="${songs.album.cover_medium}"
+                                                 alt=""></td>
+                                                 <td style="color: white;">${songs.title}</td>
+                                                 <td>1,063,959,983</td>
+                                                 <td>${songs.artist.name}</td>`
+
+
+                        table.appendChild(tr)
+                    }
+
+                })
+            // < tr >
+
+            // <tr/>
+
+
+        }
 
         function doSearch() {
             const query = document.querySelector("input[type=search]").value
@@ -484,7 +493,7 @@
 
 
         const getArtist = (artistName) => {
-            return fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=" + artistName, {
+            return fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=" + artistName, {
                 "method": "GET",
                 "headers": {
                     "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
