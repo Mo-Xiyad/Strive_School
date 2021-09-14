@@ -421,6 +421,9 @@
         </div>
     </footer>
 
+    <input type="search" placeholder="search on deezer...">
+    <button onclick="doSearch()">search</button>
+
 
 
     <!--- FOOTER-->
@@ -435,19 +438,17 @@
         crossorigin="anonymous"></script>
 
     <script>
-        const getArtist = () => {
-            fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem", {
-                "method": "GET",
-                "headers": {
-                    "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-                    "x-rapidapi-key": "58b9943fb1mshb5c9dff5c7132afp1a7cdbjsne88c72535849"
-                }
-            })
+        // const song 
+
+        function doSearch() {
+            const query = document.querySelector("input[type=search]").value
+            getArtist(query)
                 .then(response => {
                     return response.json();
                 })
                 .then(body => {
                     let row = document.querySelector('#fect-songs-Api')
+                    row.innerHTML = ''
                     for (let i = 0; i < body.data.length; i++) {
                         let songList = body.data[i]
 
@@ -478,6 +479,22 @@
                 .catch(err => {
                     console.error(err);
                 })
+
+        }
+
+
+        const getArtist = (artistName) => {
+            return fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=" + artistName, {
+                "method": "GET",
+                "headers": {
+                    "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+                    "x-rapidapi-key": "58b9943fb1mshb5c9dff5c7132afp1a7cdbjsne88c72535849"
+                }
+            })
+
+
+
+
         }
         window.onload = function () {
             getArtist();
