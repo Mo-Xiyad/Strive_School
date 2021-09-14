@@ -1,0 +1,422 @@
+* {
+  transition: all 0.7s ease-out;
+}
+
+body{
+    font-family:sans-serif,Helvetica,Helvetica,Arial;
+    color:#B3B3B3;
+    background-color: #121212;
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+    width: 0.6em;
+    
+}
+ 
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px #121212;
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: #6C6C6C;
+  border-top-left-radius: 10px ;
+  border-top-right-radius: 10px ;
+  border-bottom-left-radius: 10px ;
+  border-bottom-right-radius: 10px ;
+}
+div.hidden-box{
+    background: rgb(18,18,18);
+    background: linear-gradient(0deg, rgba(18,18,18,1) 9%, rgba(237,191,191,0.7595413165266106) 100%);
+    height: 330px;
+    width: 100%;
+    opacity: 0.4;
+}
+
+h1,h2,h3,h4,h5,h6{
+    color: rgb(255,255,255);
+}
+
+.slide-back {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    background-color: #202020;
+}
+.slide-next{
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    background-color: #202020;
+    
+}
+.slide-back button i{
+    color:white;    
+    font-size: 20px;
+    position: absolute;
+    top: 5px;
+    left: 65px;
+}
+.slide-back:hover{
+    background-color: #6C6C6C;
+}
+.slide-next:hover{
+    background-color: #6C6C6C;
+}
+.slide-next button i{
+    color:white;    
+    font-size: 20px;
+    position: absolute;
+    top: 5px;
+    left:10px;
+}
+nav div.indicators{
+    margin-left:16%;
+    position: relative;
+}
+.box{
+    margin-left:17%;
+    margin-right: 1%;
+    overflow: hidden;
+}
+
+div.main-nav-bar div.side-nav{
+    background-color: rgb(0,0,0);
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    position: fixed;
+    height: 87vh;
+}
+
+div.main-nav-bar div.side-nav ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+}
+
+div.main-nav-bar div.side-nav ul li a {
+    display: block;
+    color:#B3B3B3;
+    padding: 8px 0 8px 16px;
+    text-decoration: none;
+}
+
+div.main-nav-bar div.side-nav ul li a.active {
+    background-color: #555;
+    border-radius: 10px;
+    border-left: 3px solid #202020;
+    border-right: 3px solid #202020;
+    
+}
+
+div.main-nav-bar div.side-nav ul li a:hover:not(.active) {
+    font-weight: bold;
+    color: rgb(255,255,255);
+}
+
+nav.bg-light {
+    background-color: transparent !important;
+}
+
+nav.navbar {
+   /* color: rgb(138, 59, 59);
+   height: 100%; */
+}
+
+.plus-sign-nav{
+    background-color:#B3B3B3;
+    width: 20px;
+    height: 20px;
+}
+div.plus-sign-nav + a{
+    color:#B3B3B3;
+    text-decoration: none;
+    cursor: pointer;
+}
+.liked-sign-nav{
+    background: linear-gradient(135deg,#450af5,#c4efd9);
+    border-radius: 1px;
+    width: 20px;
+    height: 20px;
+}
+div.liked-sign-nav + a{
+    color:#B3B3B3;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Profile button */
+.dropdown-toggle img {
+    vertical-align: middle;
+    position: relative;
+    top: -9%;
+    left: -6px;
+}
+
+.dropdown-toggle {
+    font-weight: bolder;
+}
+
+.dropdown-toggle, .dropdown-menu {
+    background-color: rgb(18,18,18);
+    color: rgb(255,255,255);
+}
+
+.dropdown-item {
+    color: rgb(255,255,255);
+}
+
+.dropdown-toggle:hover{
+    color:rgb(255,255,255) !important;
+    background-color: rgba(5, 5, 5, 0.5);
+}
+
+hr{
+ background-color: #1f1f1f;   
+}
+
+div.side-menu-songs-list{
+    overflow: auto;
+    height: 35vh;
+    background-color: rgb(0,0,0);
+}
+
+div.side-menu-songs-list ul li{
+overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
+font-weight: lighter;
+font-size: 14px;
+line-height: 35px;
+}
+
+
+div.side-menu-songs-list::-webkit-scrollbar {
+    width: 0.5em;
+}
+ 
+div.side-menu-songs-list::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px #121212;
+}
+ 
+div.side-menu-songs-list::-webkit-scrollbar-thumb {
+    background-color: #6C6C6C;
+    border-top-left-radius: 10px ;
+    border-top-right-radius: 10px ;
+    border-bottom-left-radius: 10px ;
+    border-bottom-right-radius: 10px ;
+}
+
+/* STYLE OF GREETINGS SECTION */
+
+.box .card-deck .card .row .imgbox img {
+    /* height: 60px;
+    width: auto; */
+    background-size: contain;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+/* .box .card-deck .card .row .col-md-9 .card-body p {
+    font-weight: bold;
+    font-size: smaller;
+    vertical-align: middle;
+}
+
+.box .card-deck .card {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+} */
+
+.first-div-card-styles{
+    width: 15rem; 
+    height: 5rem; 
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgba(82, 79, 79, 0.3) !important;
+    color: #fff;
+  }
+  div.first-div-card-styles a{
+      color: white;
+  }
+  div.first-div-card-styles a:hover{
+      text-decoration:none;
+  }
+
+  
+.first-div-card-styles:hover{
+    transition: all 0.2s ease-out;
+    background-color: rgba(104, 101, 101, 0.5) !important;
+    color: #fff;
+    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+    top: -4px;
+    border: 1px solid #464545;
+  }
+    
+.first-div-card-styles:hover:before {
+    transform: scale(2.15);
+  }
+
+div.first-div-card-styles img{
+    border-top-left-radius: 5px ;
+    border-bottom-left-radius: 5px ;
+}
+
+
+
+
+
+/* STYLE OF GREETINGS SECTION END */
+/* EVERYTHING BELOW HERE PLEASE RENAME THE CLASSES OR USE A DIFFERENT TYPE OF A SELECTORE */
+/* THE IT IS NOW MESSING UP A LOT OF CODES  */
+
+/* CSS STYLES FOR THE CARDS */
+.card{
+    background-color: rgba(31, 27, 27, 0.4);
+    margin: 5px; 
+    margin-top: 2px;
+    cursor: pointer;
+    overflow: hidden; 
+}
+.card:hover{
+    transition: all 0.2s ease-out;
+    background-color: rgba(104, 101, 101, 0.5) !important;
+    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+    top: -4px;
+    border: 1px solid #464545;
+}
+
+/* ================= RECENTLY PLAYED DIV ANIMATION ================== */
+/* this is only styling the div with the "RECENTLY PLAYED" */
+.recent-ply-card-img{
+    width: 80%;
+    margin-top: 15px;
+    align-self: center;
+    background-size: contain;
+    margin-bottom:0px;
+    overflow: hidden; 
+}
+/* makeing the card flip with info */
+.rp-card{
+    overflow: hidden; 
+    position: relative;
+
+}
+
+img.recent-ply-card-img {
+    transition: .5s;
+    
+}
+.card:hover img.recent-ply-card-img{
+    opacity: 1;
+    transform: translateX(95%);
+    transition: all .8s ease-in;
+}
+.details{
+    position: absolute;
+    width: 70%;/*100%*/
+    height: 100%;
+    transition: .5s;
+    transform-origin: left;
+    transform: perspective(2000px) rotateY(-90deg);
+    
+}
+.card:hover img.recent-ply-card-img{
+    opacity: 0.8;
+}
+.card:hover .details {
+    transform: perspective(2000px) rotateY(0deg);
+    transition: all 1s ease-in;
+    /* background-color:black; */
+}
+.card:hover .card-text-paragraph {
+    visibility: hidden;
+}
+.details .center {
+    padding: 0px;
+    padding-left: 5px;
+    text-align: center;
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+}
+.details .center p {
+    margin: 10px 0;
+    padding: 0;
+    padding-left: 5px;
+    color: white;
+    text-align: center;
+}
+.details .center ul {
+    margin: 10px auto 0;
+    padding: 0;
+    display:inline-flex;
+    list-style: none;
+}
+
+.details .center ul li a {
+    display: block;
+    color: #fff;
+    width: 30px;
+    text-align: center;
+    transform: .5s;
+}
+/* ================= END RECENTLY PLAYED DIV ANIMATION ================== */
+
+
+/* this is only styling the div with the "Shows to try" */
+.shows-to-try-img{
+    width: 80%;
+    margin-top: 15px;
+    align-self: center;
+    background-size: contain;
+    border-radius: 10px;
+    margin-bottom:0px;
+    color: #fff !important;
+}
+a.card-link,
+a.card-link:hover {
+  color:#B3B3B3;
+  text-decoration: none;
+}
+.card-text-paragraph{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 170px;
+    
+}
+
+/* CSS STYLES FOR THE CARD END */
+
+/* FOOTER CSS */
+footer {
+        padding: 10px 10px 0px 10px;
+        height: calc(100vh - 87vh);
+        font-size: 15px;
+        background-color: #181818;
+        border-top: 1px solid #282828;
+        }
+        
+        .bar{
+        height: 2px;
+        width: 75%;
+        background-color: white;
+        }
+        
+        .bar2{
+        height: 4px;
+        width: 25%;
+        background-color: white
+        }
+
+        #volume {
+            margin-left: -80px;
+        }
+
+/* Audio Player */
+

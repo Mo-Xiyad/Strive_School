@@ -1,0 +1,110 @@
+/* CSS STYLE FOR THE TABLE ON THE ARTIST PAGE */
+
+.button-one{
+    border: 1px solid grey;
+    border-radius: 5%;
+    color: white;
+    margin: 1px;
+    background-color:rgb(53, 56, 59);
+    margin-left: 40px;
+    padding-left:20px ;
+    padding-right:20px ;
+}
+
+.icon-container .dot {
+    height: 35px;
+    width: 35px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    display: inline-block;
+    }
+
+.icon-container .container1 {
+    position: absolute;
+    padding-top: 7px;
+    padding-left: 7px;
+    padding-bottom: 0%;
+    padding-right: 0%;
+    }
+.icon-container .container2 {
+    position: relative;
+    display: inline-block;
+    }
+
+th,td {
+    color:rgb(134, 134, 134);
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+h3,h4 {
+    font-weight: bolder;
+    color: white;
+}
+.three-dot-container{
+    margin-left: 20px;
+    overflow: hidden
+}
+
+.button-one {
+    color: rgb(255, 255, 255);
+}
+
+.gradient-background{
+    background: rgb(18,18,18);
+    background: linear-gradient(0deg, rgba(18,18,18,1) 85%, rgba(218, 197, 197, 0.76) 100%);
+}
+
+.icon-container{
+    margin-top: -20px;
+}
+
+.follow-btn {
+    font-weight: bold;
+    font-size: small;
+    height: 30px;
+    margin-left: 16px;
+}
+
+/* CSS STYLE FOR THE TABLE ON THE ARTIST PAGE END */
+.hidden-box-artist{
+    background: rgb(0,0,0);
+    margin:0;
+    margin-left: 10%;
+    padding: 0;
+    width: 90%;
+    opacity: 0.5;
+    /* height: 45vh; */
+    overflow-x: hidden;
+}
+
+div.hidden-box-artist div.row div.text-box-wthi-artist{
+    /* background: rgb(0,0,0);
+    background: linear-gradient(58deg, rgba(0,0,0,1) 26%, rgba(15,15,15,0.5074404761904762) 85%); */
+    /* position: absolute; */
+    margin:0;
+    /* height: 350px; */
+    /* width: 100vw; */
+    opacity: 0.5;
+}
+
+
+.fade-box-artist{
+    background: rgb(18,18,18);
+    background: linear-gradient(0deg, rgba(18,18,18,0.938813025210084) 0%, rgba(8,8,9,1) 73%, rgba(0,0,0,0.9612219887955182) 99%);
+    height: 100px;
+    width: 100vw;
+    z-index:-1;
+}
+
+div.box div.artist-top-lable h1{
+    font-weight: 800;
+    font-size: 90px;
+    z-index:22;
+    letter-spacing: -3px;
+
+}
+
+div.box div.artist-top-lable{
+    margin-top:  125px;
+}
