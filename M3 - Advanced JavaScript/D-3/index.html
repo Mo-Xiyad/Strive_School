@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <h1>This just Memes</h1>
+
+    <div class="container">
+        <h1>Trivia</h1>
+        <button class="btn btn-primary" onclick="getMore()">Trivia</button>
+        <div class="row">
+
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Movies</h1>
+        <div class="row" id='moveDb'>
+
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+
+    <script>
+        const getMore = () => {
+            api()
+        }
+
+        const api = () => {
+            loadUserInfo()
+                .then(response => {
+                    return response.json()
+                })
+                .then(body => {
+
+                    // console.log(body)
+                    let row = document.querySelector('.row')
+                    let div = document.createElement('div')
+
+                    div.className = 'col-4'
+                    div.innerHTML = `<p> The  Number ${body.number}</p>
+                                    <p>${body.text}</p>
+                                    <button class='btn btn-primary'>${body.type}</button>`
+
+                    row.appendChild(div)
+
+
+                })
+                .catch(err => {
+                    console.error(err);
+                })
+        }
+
+        const loadUserInfo = () => {
+            /* ======= This API is for random Trivia */
+            return fetch("https://numbersapi.p.rapidapi.com/random/trivia?json=true&fragment=true&max=50&min=10", {
+                "method": "GET",
+                "headers": {
+                    "x-rapidapi-host": "numbersapi.p.rapidapi.com",
+                    "x-rapidapi-key": "58b9943fb1mshb5c9dff5c7132afp1a7cdbjsne88c72535849"
+                }
+            })
+
+        }
+
+        const getMove = () => {
+            moveDB()
+                .then(response => {
+                    return response.json()
+                })
+                .then(body => {
+
+                    console.log(body)
+                    let row = document.querySelector('#moveDb')
+                    let div = document.createElement('div')
+
+                    div.className = 'col-4'
+                    div.innerHTML = `<div class="card" style="width: 18rem;">
+                                        <img src="" class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                                <h5 class="card-title">${body.original_title}</h5>
+                                                <p class="card-text">${body.overview}</p>
+                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                            </div>
+                                    </div>`
+
+
+
+                    row.appendChild(div)
+                })
+                .catch(err => {
+                    console.error(err);
+                })
+        }
+
+        const moveDB = () => {
+            // MoveDB API
+            return fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=1fb186ebcb0b1bf8d654677c1b4b9687", {
+                "method": "GET",
+
+            })
+        }
+
+
+
+
+        window.onload = function () {
+            getMove()
+        }
+
+    </script>
+</body>
+
+</html>
