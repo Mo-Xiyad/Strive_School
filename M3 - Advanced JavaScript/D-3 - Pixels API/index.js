@@ -136,3 +136,7 @@ const secondryImages = () => {
 window.onload = function () {
   secondryImages()
 }
+
+
+// WEDSITE
+// https://www.pexels.com/api/new/
