@@ -55,7 +55,7 @@ const sum = (n1, n2) => {
 
 const result = sum(5, 3)
 
-const _result = function(){ return sum(9, 10) }
+const _result = function () { return sum(9, 10) }
 // const _result = () => sum(5, 3)
 
 console.log(result)
@@ -77,7 +77,7 @@ const computeAge = (n1, n2, callback) => {
 
     // callback("Foram") // greet("Foram")
     callback(age) // (age) => greet("Alexander", age), displayingNum(age)
-    
+
 
 }
 
@@ -138,13 +138,13 @@ const array1 = ['a', 'b', 'c', 'd', 'e'];
 
 array1.forEach((elem) => { console.log(elem) })
 
-const arrOfNum = [1,1232,315,34,65,66,7]
+const arrOfNum = [1, 1232, 315, 34, 65, 66, 7]
 
 // .map()
 
 // is a non mutating method that transforms the original element of an array and returns a new array out of the operation (REMEMBER TO RETURN FROM THE CALLBACK FUNCTION!)
 
-const mappedElems = arrOfNum.map((num) => num * 2 )
+const mappedElems = arrOfNum.map((num) => num * 2)
 
 // mappedElems
 
@@ -159,17 +159,17 @@ const list = people.map(str => `<li>${str}</li>`)
 // list.forEach(li => { document.getElementsByTagName("body")[0].appendChild(li) })
 
 const arrObjPeople = [
-    {name: "Stefano", age: 12, kudos: 250}, 
-    {name: "John", age: 25, kudos: 1000}, 
-    {name: "Abnet", age: 35, kudos: 100}, 
-    {name: "Cian", age: 15, kudos: 10},
+    { name: "Stefano", age: 12, kudos: 250 },
+    { name: "John", age: 25, kudos: 1000 },
+    { name: "Abnet", age: 35, kudos: 100 },
+    { name: "Cian", age: 15, kudos: 10 },
 ]
 
-arrObjPeople.forEach(obj => console.log( "FOREACH", obj.name ))
+arrObjPeople.forEach(obj => console.log("FOREACH", obj.name))
 
 console.log(arrObjPeople.map(obj => obj.kudos))
 
-console.log(arrObjPeople.map( function(obj) { return obj.kudos }))
+console.log(arrObjPeople.map(function (obj) { return obj.kudos }))
 
 
 // .filter() 
@@ -177,7 +177,7 @@ console.log(arrObjPeople.map( function(obj) { return obj.kudos }))
 // filters the elements of an array using a condition that you provide, you'll return either true or false from the function, and for the elements that
 // returned true they will be put in a new array of filtered elements
 
-console.log(arrObjPeople.filter(person => person.age > 15 ))
+console.log(arrObjPeople.filter(person => person.age > 15))
 console.log(arrOfNum.filter(num => num > 66))
 
 
@@ -200,7 +200,7 @@ console.log(arrOfStrings.filter(str => str.length > 15))
 
 // .find()
 // similar to filter but this one will not return a new array, it will return the first element found that meets the condition (eg. {name: "Stefano", ...etc})
-console.log(arrObjPeople.find(person => person.age > 5 ))
+console.log(arrObjPeople.find(person => person.age > 5))
 console.log(arrOfNum.find(n => n < 2))
 
 // .reduce()
@@ -209,9 +209,9 @@ console.log(arrOfNum.find(n => n < 2))
 // you have accumulator which is the returned element of the previous cycle (initially is the initial value)
 // and currentValue which is the current element in the cycle. Combining the two things will give you the ability to reduce a collection to a single entity
 // or creating a completely different entity out of the cycled elements. It's probably the most powerful method and you'll learn to use it over time.
- 
 
-const _arrOfNum = [21,123,15,34,65,66,7]
+
+const _arrOfNum = [21, 123, 15, 34, 65, 66, 7]
 
 const reduced = _arrOfNum.reduce((accumulator, currentValue) => {
     console.log(accumulator)
@@ -221,7 +221,7 @@ const reduced = _arrOfNum.reduce((accumulator, currentValue) => {
 
 
 const reducedAgesSum = arrObjPeople.reduce((acc, curr) => acc + curr.age, 0)
-const reducedArr = arrObjPeople.reduce ((acc, curr) => acc.concat(curr.age), [])
+const reducedArr = arrObjPeople.reduce((acc, curr) => acc.concat(curr.age), [])
 
 console.log(reduced)
 console.log(reducedAgesSum)

@@ -56,6 +56,7 @@ const renderData = function () {
 
 const filterBooks = (query) => {
     // const filteredBooks = [...]
+    let newbooks = query.filter()
     // displayBooks(filteredBooks)
 
     console.log(query)
