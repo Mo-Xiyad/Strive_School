@@ -183,7 +183,12 @@ div.side-menu-songs-list{
     height: 35vh;
     background-color: rgb(0,0,0);
 }
-
+.mycardtext{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 150px;
+}
 div.side-menu-songs-list ul li{
 overflow: hidden;
 white-space: nowrap;

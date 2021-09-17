@@ -877,15 +877,22 @@
         crossorigin="anonymous"></script>
 
     <script>
+
+
+
         const albumApi = () => {
-            return fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem")
+            return fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem%50%lil%wayn")
+            // return fetch(`https://striveschool-api.herokuapp.com/api/deezer/album?id=${random}`)
+            // return fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${id}`)
         }
 
         let getfirst10 = []
         const displayAlbums = () => {
+            // let random = Math.floor(Math.random() * 500000) + 100000
             albumApi()
                 .then((response) => response.json())
                 .then((albums) => {
+                    console.log(albums)
                     let sectionOne = document.querySelector('#good-morning')
                     // let getfirst10 = [] //getting the first 10 albums
 
@@ -909,7 +916,7 @@
                                 </a>
                             </div>
                             <a href="./Album.html?id=${id}">
-                                <p class="m-0 pl-3 font-weight-light">${title}</p>
+                                <p class="m-0 pl-3 font-weight-light mycardtext">${title}</p>
                             </a>
                         </div>
                     </div>`
