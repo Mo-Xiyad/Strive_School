@@ -876,37 +876,39 @@
         integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
         crossorigin="anonymous"></script>
 
+
+    <!-- Below script is where the first section fetch the music -->
     <script>
-
-
-
         const albumApi = () => {
             return fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem%50%lil%wayn")
             // return fetch(`https://striveschool-api.herokuapp.com/api/deezer/album?id=${random}`)
             // return fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${id}`)
         }
 
-        let getfirst10 = []
+        let getfirst10 = []//getting the first 10 albums from the function below
+
         const displayAlbums = () => {
             // let random = Math.floor(Math.random() * 500000) + 100000
             albumApi()
                 .then((response) => response.json())
                 .then((albums) => {
-                    console.log(albums)
-                    let sectionOne = document.querySelector('#good-morning')
-                    // let getfirst10 = [] //getting the first 10 albums
 
+                    let sectionOne = document.querySelector('#good-morning')
+
+                    // let getfirst10 = [] //getting the first 10 albums
                     for (let i = 0; i < 12; i++) {
                         let data = albums.data[i]
                         getfirst10.push(data)
                     }
-                    // displayArtist()
 
                     getfirst10.forEach((data) => {
                         const { title, id } = data.album
+
                         const img = data.album.cover_medium
+
                         let card = document.createElement('div')
-                        // console.log(data.album.id)
+
+
                         card.innerHTML = `<div class="card card-morning-2 d-flex m-0 mb-2 mr-auto first-div-card-styles">
                         <div class="d-flex align-items-center">
                             <div class="d-flex align-items-center justify-content-center">
@@ -924,6 +926,7 @@
                         // card.onclick = () => {
                         //     window.location.assign("./Album.html?Id=" + id)
                         // }
+
                         sectionOne.appendChild(card)
                     })
 
@@ -932,6 +935,38 @@
 
         displayAlbums()
 
+    </script>
+
+    <!-- time and date  functions -->
+    <script>
+        const currentDate = function () {
+            let currentDateSpan = document.querySelector('#date')
+            let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+            let months = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Nov', 'Dec']
+
+            let d = new Date();
+            let date = d.getDate()
+            let day = d.getDay();
+            let mnoth = d.getMonth()
+            let year = d.getFullYear()
+
+            currentDateSpan.textContent = `${days[day]}, ${date} ${months[mnoth]}`
+        }
+
+        const time = function () {
+            let timespan = document.querySelector('#time')
+            let d = new Date();
+            //======= Time  =======
+            let s = d.getSeconds();
+            let m = d.getMinutes();
+            let h = d.getHours();
+
+            timespan.textContent =
+                ("0" + h).substr(-2) + ":" + ("0" + m).substr(-2) + ":" + ("0" + s).substr(-2);
+            setInterval(time, 1000);
+        }
+        time()
+        currentDate()
     </script>
 
 </body>

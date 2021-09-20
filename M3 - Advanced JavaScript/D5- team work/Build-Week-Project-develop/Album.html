@@ -291,7 +291,6 @@
     <!--- FOOTER-->
     <!-- <script src="./assets/js/homepage_api.js"></script> -->
 
-    <script src="./assets/js/inxed.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -314,36 +313,36 @@
             albumAPI(id)
                 .then((response) => response.json())
                 .then((album) => {
-                    console.log('in here its the artis or whatever')
-                    console.log(album)
-
                     let img = document.createElement('img')
                     img.src = album.cover_medium
                     img.classList.add('album-img')
+
                     albumCover.appendChild(img)
 
                     albumTitle.innerHTML = album.title
 
                     artistName.innerHTML = `<a href = "./Artist.html?id=${album.artist.id}" >${album.artist.name}</a >`
-                    // console.log(album.artist.id)
-                    // console.log(album.tracks)
+
                     let data = album.tracks
                     let songlist = document.querySelector('#song-list')
-                    data.data.forEach((song, index) => {
-                        const { duration, title } = song
-                        let songRow = document.createElement('div')
-                        songRow.classList.add('row-songs')
 
-                        songRow.innerHTML = `
+                    data.data.forEach((song, index) => {
+
+                        const { duration, title } = song
+
+                        let songsRow = document.createElement('div')
+                        songsRow.classList.add('row-songs')
+
+                        songsRow.innerHTML = `
                                             <div class="col-1 track-number">${index + 1}</div>
                                             <div class="col-10">
                                                 <div class="row1">${title} </div>
                                                 <div class="row2">${song.artist.name}</div>
                                             </div>
-                                            <div class="col-1 time float-right mr-2">${duration}</div>
+                                            <div class="col-1 time float-right mr-2">${("0" + Math.floor(duration / 60)).slice(-2)} :${("0" + duration % 60).slice(-2)}</div>
                                         `
-                        songlist.appendChild(songRow)
-                        // console.log(title, duration)
+                        songlist.appendChild(songsRow)
+
                     })
                 })
         }

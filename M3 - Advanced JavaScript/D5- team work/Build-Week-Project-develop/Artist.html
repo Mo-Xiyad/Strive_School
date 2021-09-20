@@ -229,7 +229,7 @@
                             <table class="table table-borderless table-transparent" style="position:relative">
                                 <tbody id="top-song-table">
 
-
+                                    <!-- Reminder for later to put a placeholder while the songs are being loaded -->
 
                                 </tbody>
                             </table>
@@ -357,9 +357,6 @@
 
     <!--- FOOTER-->
 
-    <!-- Api initilization -->
-    <script src="./assets/js/homepage_api.js"></script>
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
@@ -388,7 +385,7 @@
 
         displayArtist()
 
-        const topMusicApi = (id = 13) => {
+        const getArtistsTopTracksApi = (id = 13) => {
             return fetch(`https://deezerdevs-deezer.p.rapidapi.com/artist/${id}/top`, {
                 "method": "GET",
                 "headers": {
@@ -398,17 +395,18 @@
             })
         }
 
-        const toMusic = () => {
+        const displayTopFiveTracks = () => {
             let searchParams = new URLSearchParams(window.location.search)
             let id = searchParams.get('id')
-            topMusicApi(id)
+            getArtistsTopTracksApi(id)
                 .then((response) => response.json())
+
                 .then((data) => {
-                    console.log(data)
                     data.data.forEach((song, index) => {
-                        console.log(song)
+
                         let table = document.querySelector('#top-song-table')
                         let tr = document.createElement('tr')
+
                         tr.innerHTML = `
                                         <th scope="row">${index + 1}</th>
                                         <td><img style="width:50px; height:50px;"
@@ -416,7 +414,8 @@
                                                 alt=""></td>
                                         <td style="color: white;">${song.title}</td>
                                         <td>1,063,959,983</td>
-                                        <td>${song.duration}</td>`
+                         <td>${("0" + Math.floor(song.duration / 60)).slice(-2)} : ${("0" + song.duration % 60).slice(-2)}</td>`
+
 
                         table.appendChild(tr)
 
@@ -424,10 +423,10 @@
                 })
                 .catch(err => {
                     console.error(err);
-                    // toMusic()
+                    displayTopFiveTracks() // this is just gonna run untill i get all the top tracks loaded in the page
                 });
         }
-        toMusic()
+        displayTopFiveTracks()
     </script>
 
     <script>

@@ -197,49 +197,27 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-const currentDate = function () {
-    let currentDateSpan = document.querySelector('#date')
-    let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-    let months = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Nov', 'Dec']
 
-    let d = new Date();
-    let date = d.getDate()
-    let day = d.getDay();
-    let mnoth = d.getMonth()
-    let year = d.getFullYear()
 
-    currentDateSpan.textContent = `${days[day]}, ${date} ${months[mnoth]}`
-}
 
-const time = function () {
-    let timespan = document.querySelector('#time')
-    let d = new Date();
-    //======= Time  =======
-    let s = d.getSeconds();
-    let m = d.getMinutes();
-    let h = d.getHours();
-
-    timespan.textContent =
-        ("0" + h).substr(-2) + ":" + ("0" + m).substr(-2) + ":" + ("0" + s).substr(-2);
-    setInterval(time, 1000);
-}
-
+// let getUsername = new URLSearchParams(window.location.search)
+// let username = getUsername.get("username")
 
 const queryDict = {}
 location.search.substr(1).split("&").forEach(function (item) {
     queryDict[item.split("=")[0]] = item.split("=")[1]
 })
 
+
 const greet = function () {
     let sapnMsg = document.querySelector('#greet-pop')
 
-    sapnMsg.textContent = `Welcome Back ${queryDict["usernaem"].substring(0, 3)} !`
+    sapnMsg.textContent = `Welcome Back ${queryDict["username"].substring(0, 3)} !`
+    // sapnMsg.textContent = `Welcome Back ${username} !`
 }
 
 
 window.onload = function () {
-    colorChanger()
-    currentDate()
-    time()
-    greet()
+    // colorChanger() // uncomment it to see the colore change in every card in first section 
+    // greet() // this function will run every time when the user login to the page but it is not fully functional, greeting needs to heppen only once 
 }
