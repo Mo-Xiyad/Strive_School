@@ -42,12 +42,23 @@
                                     d="M448 463.746h-149.333v-149.333h-85.334v149.333h-149.333v-315.428l192-111.746 192 110.984v316.19z"
                                     fill="currentColor"></path>
                             </svg></span> Home</a></li>
-                <li><a class="" href="#contact"> <span class="pr-2"><svg viewBox="0 0 512 512" width="24" height="24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M349.714 347.937l93.714 109.969-16.254 13.969-93.969-109.969q-48.508 36.825-109.207 36.825-36.826 0-70.476-14.349t-57.905-38.603-38.603-57.905-14.349-70.476 14.349-70.476 38.603-57.905 57.905-38.603 70.476-14.349 70.476 14.349 57.905 38.603 38.603 57.905 14.349 70.476q0 37.841-14.73 71.619t-40.889 58.921zM224 377.397q43.428 0 80.254-21.461t58.286-58.286 21.461-80.254-21.461-80.254-58.286-58.285-80.254-21.46-80.254 21.46-58.285 58.285-21.46 80.254 21.46 80.254 58.285 58.286 80.254 21.461z"
-                                    fill="currentColor" fill-rule="evenodd"></path>
-                            </svg></span> Search</a></li>
+                <li>
+                    <div class="input-group mt-3">
+                        <div class="input-group-append" style="margin-bottom: 4%">
+                            <button class="btn btn-outline-secondary btn-sm" type="button" id="button-addon1"
+                                onclick="search()">
+                                <svg viewBox="0 0 512 512" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M349.714 347.937l93.714 109.969-16.254 13.969-93.969-109.969q-48.508 36.825-109.207 36.825-36.826 0-70.476-14.349t-57.905-38.603-38.603-57.905-14.349-70.476 14.349-70.476 38.603-57.905 57.905-38.603 70.476-14.349 70.476 14.349 57.905 38.603 38.603 57.905 14.349 70.476q0 37.841-14.73 71.619t-40.889 58.921zM224 377.397q43.428 0 80.254-21.461t58.286-58.286 21.461-80.254-21.461-80.254-58.286-58.285-80.254-21.46-80.254 21.46-58.285 58.285-21.46 80.254 21.46 80.254 58.285 58.286 80.254 21.461z"
+                                        fill="currentColor" fill-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <input type="text" class="form-control mb-2" id="searchField" placeholder="Search"
+                            aria-label="Search" aria-describedby="basic-addon2" onkeyup="handleSearchQuery(event)" />
+                    </div>
+                </li>
+
                 <li><a class="" href="#about"> <span class="pr-2"><svg viewBox="0 0 512 512" width="24" height="24"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -324,6 +335,22 @@
             </div>
             <!-- end cards -->
         </div>
+    </div>
+
+    <!-- search -->
+    <div class="box pl-2 mt-4">
+
+
+        <div id="searchResults" class="">
+            <h2 class="d-inline-block">Search Results</h2>
+            <h3></h3>
+            <div class="spinner-border text-primary d-none" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="row"></div>
+        </div>
+    </div>
+
     </div>
 
     <!-- second div with cards -->
@@ -934,6 +961,81 @@
         }
 
         displayAlbums()
+
+    </script>
+
+    <!-- search function -->
+    <script>
+        const isLoading = (loading) => {
+
+            const spinner = document.querySelector(".spinner-border")
+
+            if (loading) {
+                spinner.classList.remove("d-none")
+            } else {
+                spinner.classList.add("d-none")
+            }
+        }
+
+        let query = 'queen'
+
+        const searchItemCards = (song) => `
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 px-1 mb-2">
+                        <div class="card pt-2 rp-card">
+                            <img class="shows-to-try-img"
+                                src="${song.album.cover_medium}"
+                                alt="Card image cap">
+                            <div class="card-body card-text-paragraph">
+                                <a href="./Album.html?id=${song.album.id}">
+                                <p class="pb-0 mb-1">${song.title} </p>
+                                </a>
+                                <a href="./Artist.html?id=${song.artist.id}">
+                                <small>${song.artist.name}</small>
+                                </a>
+                            </div>
+                        </div>
+                    </div>`
+
+
+        const searchApi = async (q = query) => {
+
+            const response = await fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${q}`)
+            const data = await response.json();
+            return data
+        }
+
+        const search = () => {
+            isLoading(true)
+
+            searchApi()
+                .then(({ data }) => {
+                    const songsarray = data
+
+                    let queryTitle = document.querySelector('#searchResults > h3')
+                    queryTitle.innerText = query
+
+                    let searchArea = document.querySelector('#searchResults > .row')
+                    searchArea.innerHTML = ""
+
+                    songsarray.forEach(song => {
+
+                        searchArea.innerHTML += searchItemCards(song)
+                        console.log(song)
+                    })
+                })
+            isLoading(false)
+        }
+        const handleSearchQuery = (event) => {
+
+            query = event.target.value
+
+            if (event.key === "Enter" && query.length > 3) {
+                search()
+            }
+
+        }
+
+
 
     </script>
 
