@@ -15,6 +15,11 @@
     <link rel="stylesheet" href="./assets/css/dark-theme.css">
 
     <title>Spotify</title>
+    <style>
+        #searchResults h2 {
+            display: inline-block;
+        }
+    </style>
 </head>
 
 <body class="theme-light">
@@ -342,7 +347,7 @@
 
 
         <div id="searchResults" class="">
-            <h2 class="d-inline-block">Search Results</h2>
+            <h2 class="d-none">Search Results</h2>
             <h3></h3>
             <div class="spinner-border text-primary d-none" role="status">
                 <span class="sr-only">Loading...</span>
@@ -1011,8 +1016,11 @@
                 .then(({ data }) => {
                     const songsarray = data
 
+                    document.querySelector('#searchResults > h2').classList.remove("d-none")
+
                     let queryTitle = document.querySelector('#searchResults > h3')
                     queryTitle.innerText = query
+
 
                     let searchArea = document.querySelector('#searchResults > .row')
                     searchArea.innerHTML = ""
@@ -1031,6 +1039,11 @@
 
             if (event.key === "Enter" && query.length > 3) {
                 search()
+            }
+
+            if (event.target.value.length === 0) {
+                document.querySelector('#searchResults').classList.add("d-none")
+
             }
 
         }
