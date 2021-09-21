@@ -22,7 +22,7 @@
             data-bs-toggle="dropdown" aria-expanded="false">
             User Info
         </button>
-        <input type="text" name="" id="userinput">
+        <input onchange="handlesearch(event)" type="text" name="" id="userinput">
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <li><a id="name" class="dropdown-item" href="#">Names</a></li>
             <li><a id="username" class="dropdown-item" href="#">User Names</a></li>
@@ -64,6 +64,9 @@
         let namearr = []
         let emailarr = []
         let usernamearr = []
+
+        let query = document.querySelector("#userinput")
+
 
         const displayNames = () => {
 
@@ -115,17 +118,16 @@
         }
 
 
-        let query = document.querySelector("#userinput")
 
         const searchUserName = (event) => {
-            query.onchange = searchUserName
             query = event.target.value
-            console.log(query)
+
             infoContainer.innerHTML = ""
             usernamearr.filter(username => {
                 if (username.toLowerCase().includes(query.toLowerCase())) { infoContainer.innerHTML += infoList(username) }
             })
         }
+
 
         const searchName = (event) => {
 
@@ -137,7 +139,7 @@
             })
         }
 
-        query.onchange = (event) => {
+        const searchEmail = (event) => {
 
             query = event.target.value
             infoContainer.innerHTML = ""
@@ -148,6 +150,7 @@
         }
 
 
+        query.onchange = searchName
 
         name.onclick = displayNames
 
