@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="card" ">
+                <img src=" ..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+
+
+    <script>
+
+
+        const elements = [
+            "img", ".card-title", ".card-text"
+        ].reduce((els, selector) => {
+            console.log(els, selector)
+            els[selector] = document.querySelector(selector)
+            return els
+        }, {})
+
+        console.log(elements)
+
+
+        window.onload = () => {
+            // console.log(window.location)
+
+            fetch("https://randomuser.me/api")
+                .then(r => r.json())
+                .then(data => {
+                    console.log(data)
+
+                    const { info, results } = data //error: info is already defined
+
+                    // const info = data.info
+                    // const results = data.results
+
+                    elements[".card-text"].innerHTML = info.seed
+
+                    // console.log(renamedInfo)
+                    console.log(results)
+
+                })
+
+
+            // const fruits = ["apple", "banana", "orange"]
+
+            // const [apple, , orange] = ["apple", "banana", "orange"]
+
+            // console.log({ apple, orange })
+
+            // let a = 42
+            // let b = 24
+
+            // let temp = a
+
+            // a = b
+            // b = temp
+
+            // [a, b] = [b, a]
+
+
+            // const newFruits = [...fruits, "strawberry"] // fruits.concat(["strawberry"])
+
+            // console.log(newFruits)
+
+
+            // const myCar = {
+            //     brand: "Vauxhall",
+            //     year: 2017,
+            //     color: "blue"
+            // }
+
+            // const anotherCar = { ...myCar } // Object.assign({}, myCar) // Shallow clone.
+
+            // myCar.color = "white"
+
+            // console.log(anotherCar)
+
+
+
+
+            // const numbers = [1, 2, 3, 4, 5, 6, 7, 8]
+
+            // // The sum of these elements
+            // // const sum = numbers.reduce((a, c) => a + c)
+
+            // const sum = numbers.reduce((acc, current) => {
+            //     return acc + current
+            // })
+
+            // console.log(sum)
+
+
+            // // The highest of these elements
+
+
+            // // The average of these elements...
+
+
+
+
+
+        }
+    </script>
+</body>
+
+</html>
