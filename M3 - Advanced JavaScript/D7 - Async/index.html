@@ -60,7 +60,7 @@
         let username = document.getElementById('username')
         let email = document.getElementById('email')
         let infoContainer = document.getElementById('userinfo')
-        
+        let dorpdownBtn = document.querySelector('.dropdown > button')
         let namearr = []
         let emailarr = []
         let usernamearr = []
@@ -68,57 +68,53 @@
         const displayNames = () => {
 
             getUserApi().then(data => {
-                
+
+                dorpdownBtn.innerText = 'Names'
                 infoContainer.innerHTML = ""
-                // name.innerText = data.name
-                
+
                 data.forEach(info => {
-                    
+
                     infoContainer.innerHTML += infoList(info.name)
                     namearr.push(info.name)
-                });
-                
 
+                });
             })
         }
 
 
         const displayUserName = () => {
+
             getUserApi().then(data => {
-                console.log(data)
+
                 infoContainer.innerHTML = ""
-                // name.innerText = data.name
-                
+                dorpdownBtn.innerText = 'User Names'
+
                 data.forEach(info => {
-                    
+
                     infoContainer.innerHTML += infoList(info.username)
                     usernamearr.push(info.username)
-                    
+
                 });
-                
-                
-                
             })
         }
-        console.log(usernamearr)
+
 
         const displayEmail = () => {
+
             getUserApi().then(data => {
-                console.log(data)
+                dorpdownBtn.innerText = 'Emails'
                 infoContainer.innerHTML = ""
-                // name.innerText = data.name
-                
+
                 data.forEach(info => {
-                    
+
                     infoContainer.innerHTML += infoList(info.email)
                     emailarr.push(info.email)
 
                 });
-
             })
         }
 
-        
+
         let query = document.querySelector("#userinput")
 
         const searchUserName = (event) => {
@@ -127,34 +123,31 @@
             console.log(query)
             infoContainer.innerHTML = ""
             usernamearr.filter(username => {
-                if(username.toLowerCase().includes(query.toLowerCase()))
-                {infoContainer.innerHTML += infoList(username)}
+                if (username.toLowerCase().includes(query.toLowerCase())) { infoContainer.innerHTML += infoList(username) }
             })
         }
 
         const searchName = (event) => {
-            
+
             query = event.target.value
-            console.log(query)
             infoContainer.innerHTML = ""
+
             namearr.filter(name => {
-                if(name.toLowerCase().includes(query.toLowerCase()))
-                {infoContainer.innerHTML += infoList(name)}
+                if (name.toLowerCase().includes(query.toLowerCase())) { infoContainer.innerHTML += infoList(name) }
             })
         }
 
         query.onchange = (event) => {
-            
+
             query = event.target.value
-            console.log(query)
             infoContainer.innerHTML = ""
+
             emailarr.filter(email => {
-                if(email.toLowerCase().includes(query.toLowerCase()))
-                {infoContainer.innerHTML += infoList(email)}
+                if (email.toLowerCase().includes(query.toLowerCase())) { infoContainer.innerHTML += infoList(email) }
             })
         }
 
-        
+
 
         name.onclick = displayNames
 
