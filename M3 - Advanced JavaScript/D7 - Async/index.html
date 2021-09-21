@@ -24,9 +24,9 @@
         </button>
         <input type="text" name="" id="userinput">
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li onclick="setField('name')"><a id="name" class="dropdown-item" href="#">Names</a></li>
-            <li onclick="setField('username')"><a id="username" class="dropdown-item" href="#">User Names</a></li>
-            <li onclick="setField('email')"><a id="email" class="dropdown-item" href="#">Emails</a></li>
+            <li onclick="field='name'"><a id="name" class="dropdown-item" href="#">Names</a></li>
+            <li onclick="field='username'"><a id="username" class="dropdown-item" href="#">User Names</a></li>
+            <li onclick="field='email'"><a id="email" class="dropdown-item" href="#">Emails</a></li>
         </ul>
     </div>
 
@@ -42,7 +42,7 @@
         crossorigin="anonymous"></script>
 
 
-    <script>
+    <!-- <script>
         const infoList = (info) => `
             <li class="list-group-item">${info}</li>`
 
@@ -61,8 +61,14 @@
         let email = document.getElementById('email')
         let infoContainer = document.getElementById('userinfo')
 
+        let dropdownNode = document.querySelector('#dropdownMenuButton1')
+
         let field = ''
-        const setField = (name) => { field = name }
+
+        /* const setField = (name) => { field = name }
+        < li onclick = "setField('name')" > <a id="name" class="dropdown-item" href="#">Names</a></> */
+
+
         let namearr = []
         let emailarr = []
         let usernamearr = []
@@ -71,6 +77,7 @@
 
             getUserApi().then(data => {
 
+                dropdownNode.innerHTML = 'Name'
                 infoContainer.innerHTML = ""
                 // name.innerText = data.name
 
@@ -79,15 +86,14 @@
                     infoContainer.innerHTML += infoList(info.name)
                     namearr.push(info.name)
                 });
-
-
             })
         }
 
 
         const displayUserName = () => {
             getUserApi().then(data => {
-                console.log(data)
+
+                dropdownNode.innerText = 'Username'
                 infoContainer.innerHTML = ""
                 // name.innerText = data.name
 
@@ -97,16 +103,14 @@
                     usernamearr.push(info.username)
 
                 });
-
-
-
             })
         }
-        console.log(usernamearr)
+
 
         const displayEmail = () => {
             getUserApi().then(data => {
-                console.log(data)
+
+                dropdownNode.innerText = 'Email'
                 infoContainer.innerHTML = ""
                 // name.innerText = data.name
 
@@ -123,53 +127,28 @@
 
         let query = document.querySelector("#userinput")
 
-        // const searchUserName = (event) => {
-        //     query.onchange = searchUserName
-        //     query = event.target.value
-        //     console.log(query)
-        //     infoContainer.innerHTML = ""
-        //     usernamearr.filter(username => {
-        //         if(username.toLowerCase().includes(query.toLowerCase()))
-        //         {infoContainer.innerHTML += infoList(username)}
-        //     })
-        // }
-
-        // const searchName = (event) => {
-
-        //     diferentquery = event.target.value
-        //     console.log(query)
-        //     infoContainer.innerHTML = ""
-        //     namearr.filter(name => {
-        //         if(name.toLowerCase().includes(query.toLowerCase()))
-        //         {infoContainer.innerHTML += infoList(name)}
-        //     })
-        // }
-
         query.onchange = (event) => {
 
             query = event.target.value
-            console.log(query)
             infoContainer.innerHTML = ""
 
             if (field === "email") {
                 emailarr.filter(email => {
                     if (email.toLowerCase().includes(query.toLowerCase())) { infoContainer.innerHTML += infoList(email) }
                 })
-            } else if (field === "name") {
+            }
+
+            if (field === "name") {
                 namearr.filter(name => {
                     if (name.toLowerCase().includes(query.toLowerCase())) { infoContainer.innerHTML += infoList(name) }
                 })
-            } else if (field === "username") {
+            }
+
+            if (field === "username") {
                 usernamearr.filter(username => {
                     if (username.toLowerCase().includes(query.toLowerCase())) { infoContainer.innerHTML += infoList(username) }
                 })
             }
-
-
-
-
-
-
 
         }
 
@@ -182,7 +161,7 @@
         email.onclick = displayEmail
 
 
-    </script>
+    </script> -->
 </body>
 
 </html>
