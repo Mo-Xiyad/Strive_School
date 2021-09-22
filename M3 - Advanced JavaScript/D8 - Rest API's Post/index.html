@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <title>Strive Shop!</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="./backoffice.html">Back Office <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <h1>Strive Shop!</h1>
+
+
+    <div class="container">
+        <div class="row">
+
+        </div>
+    </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+
+</body>
+
+<script>
+
+    const productCard = (data) => {
+        const row = document.querySelector('.row')
+        const card = `    
+        <div class="col-12 col-sm-6 col-md-3">
+        <div class="card">
+        <img src="${data.imageUrl}" class="card-img-top img-fluid" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${data.name}</h5>
+                <p class="card-text">${data.description}</p>
+                <p class="card-text">${data.brand}</p>
+                <p class="card-text">${data.price}</p>
+                <a href="#" class="btn btn-primary">Buy</a>
+            </div>
+        </div>
+        </div>`
+        row.innerHTML += card
+    }
+
+    const getinfo = () => {
+        fetch('https://striveschool-api.herokuapp.com/api/product/', {
+            headers: {
+                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTRiMjFlNjRiYjUzZDAwMTViMTllZDYiLCJpYXQiOjE2MzIzMTM4MzAsImV4cCI6MTYzMzUyMzQzMH0.TlCoWBwSkaUXG_HyFMfAQnvBaxp9w-P3yR9s7r6R1yE",
+            }
+        })
+            .then((response) => response.json())
+
+            .then((data) => {
+                // console.log(data)
+                data.forEach(item => {
+
+                    productCard(item)
+
+                    // window.location.assign("/")
+                    // window.location.reload()
+                })
+            });
+    }
+    getinfo()
+
+</script>
+
+</html>
