@@ -360,8 +360,8 @@
 
     <!-- second div with cards -->
     <div class="box pl-2 mt-4">
-        <h3>Recently Played</h3>
-        <div class="row">
+        <h3>Rock Artists</h3>
+        <div id="section-tow" class="row">
 
             <!--Cards -->
 
@@ -671,9 +671,9 @@
 
     <!-- THIRD SELECTION -->
     <div class="box mt-3 pl-2">
-        <h3> Shows to try </h3>
+        <h3> Hip Hop </h3>
         <h5 class="text-muted">Podcast we think you'll get hooked on</h5>
-        <div class="row">
+        <div id="section-Three" class="row">
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 px-1 mb-2">
                 <div class="card pt-2 rp-card">
                     <img class="shows-to-try-img"
@@ -836,66 +836,54 @@
 
 
     <!--- FOOTER-->
-    <footer class="fixed-bottom position-sticky" style="background-color: rgb(24,24,24)">
-        <div class="container-fluid text-white mx-0 px-0 pb-1">
-            <div class="row ">
-                <div class="col-4 d-flex justify-content-start pl-5">
-                    <img src="https://townsquare.media/site/295/files/2020/08/DustEMI.jpg" height="55px" width="55px"
-                        style="margin-top: 7px">
-                    <p class="ml-2 pt-2 align-center"> <small>Another One Bites The Dust</small> <br>
-                        <small>Queen</small>
-                    </p>
-                    <i class="bi bi-heart px-2 pt-2 ml-2 mt-3"></i>
-                    <i class="bi bi-view-list px-2 pt-2 mt-3"></i>
-                </div>
-                <div class="col-4 justify-content-start">
-                    <div class="row">
-                        <div class="col-2"></div>
-                        <div class="col-8 d-flex justify-content-around">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-shuffle px-0 py-0 mt-2" viewBox="0 0 18 18">
-                                <path fill-rule="evenodd"
-                                    d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.624 9.624 0 0 0 7.556 8a9.624 9.624 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.595 10.595 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.624 9.624 0 0 0 6.444 8a9.624 9.624 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5z" />
-                                <path
-                                    d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192zm0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192z" />
-                            </svg>
-                            <i class="bi bi-skip-backward px-0 py-1"></i>
-                            <div class="container2"><svg xmlns="http://www.w3.org/2000/svg" width="55px" height="30px"
-                                    fill="white" class="bi bi-play-circle-fill" viewBox="0 0 16 16">
-                                    <path
-                                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z" />
-                                </svg></div>
-                            <i class="bi bi-skip-forward px-0 py-1"></i>
-                            <i class="bi bi-arrow-repeat px-0 py-1"></i>
-                        </div>
-                        <div class="col-3"></div>
-                    </div>
-                    <div class="d-flex justify-content-between mt-2">
-                        <div><small>0:00</small></div>
-                        <!-- <div class="align-center"> -->
-                        <div class="bar align-self-center"></div>
-                        <!-- </div> -->
-                        <div><small>3:25</small></div>
-
-
-                    </div>
-                </div>
-                <div class="col-4 offset-1 mt-4" id="volume">
-                    <div class="row justify-content-end">
-                        <!--  div class="col-7"></div>
-                        <div class="col-5 .d-inline-block"> -->
-
-
-                        <i class="bi bi-music-note-list px-2"></i>
-                        <i class="bi bi-volume-up px-2 "></i>
-                        <div class="bar2 mt-2 d-inline-block px-2"></div>
+    <div class="player container-fluid fixed-bottom position-sticky bg-container pt-1">
+        <div class="row flex-nowrap justify-content-between playBar py-3">
+            <div class="col-auto">
+                <div class="playerArtistInfo d-flex">
+                    <img />
+                    <div class="d-flex flex-column pl-2">
+                        <h6></h6>
+                        <p></p>
                     </div>
                 </div>
             </div>
+            <div class="col-6">
+                <div class="playerControls w-50 d-flex justify-content-between">
+                    <a href="#">
+                        <img src="./assets/img/playerbuttons/Shuffle.png" alt="shuffle" />
+                    </a>
+                    <a href="#">
+                        <img src="./assets/img/playerbuttons/Previous.png" alt="previous" />
+                    </a>
+                    <a href="#">
+                        <img src="./assets/img/playerbuttons/Play.png" alt="play" />
+                    </a>
+                    <a href="#">
+                        <img src="./assets/img/playerbuttons/Next.png" alt="next" />
+                    </a>
+                    <a href="#">
+                        <img src="./assets/img/playerbuttons/Repeat.png" alt="repeat" />
+                    </a>
+                </div>
+                <div class="progressContainer d-flex align-items-center">
+                    <span class="currentTime">00:00</span>
+                    <div class="progress w-100">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                            aria-valuemax="100">
+                            <audio></audio>
+                        </div>
+                    </div>
+                    <span class="duration">00:00</span>
+                </div>
+            </div>
+            <div class="col-auto mr-3">
+                <div class="playerVolume">
+                    <i class="fa fa-volume-up"></i>
+                    <input type="range" value="50" />
+                </div>
+            </div>
         </div>
-        </div>
-        </div>
-    </footer>
+    </div>
 
 
     <!-- <script src="./assets/js/homepage_api.js"></script> -->
@@ -911,6 +899,222 @@
 
     <!-- Below script is where the first section fetch the music -->
     <script>
+        let rockArtists = [
+            "queen",
+            "u2",
+            "thepolice",
+            "eagles",
+            "thedoors",
+            "oasis",
+            "thewho",
+            "bonjovi",
+        ];
+
+        let popArtists = [
+            "maroon5",
+            "coldplay",
+            "onerepublic",
+            "jamesblunt",
+            "katyperry",
+            "arianagrande",
+        ];
+
+        let hipHopArtists = [
+            "eminem",
+            "snoopdogg",
+            "lilwayne",
+            "drake",
+            "kanyewest",
+        ];
+
+        // ### Player functionality ###
+        const audio = document.getElementsByTagName("audio")[0] // grabbing audio element
+        const playBtn = document.querySelector("img[alt='play']") // grabbing play button element
+
+        const setPlayerSong = (song) => { // gets called by the onclick onto the column of the element
+            // audio.src = song.preview
+            playBtn.src = "./assets/img/playerbuttons/Play.png" // we need to change the icon state since the song will be playing when this function runs
+
+            localStorage.setItem("songId", song.id) // setting the clicked song id into the localStorage (needed to retrieve the last chosen song upon fetching -below-)
+            setPlayerInfos(song) // this function will populate the information of the player (img, title, album, son duration etc)
+            audio.play() // triggers the audio to play (audio tag received the src from within setPlayerInfos)
+        }
+
+        const setPlayerInfos = (song) => {
+
+            // grabbing elements
+            const playerArtistInfo = document.querySelector(".playerArtistInfo")
+
+            const img = playerArtistInfo.querySelector("img")
+            const songTitle = playerArtistInfo.querySelector("h6")
+            const songAlbum = playerArtistInfo.querySelector("p")
+
+            // applying song info to the player
+            img.src = song.album.cover_small;
+            img.classList.add("img-fluid")
+            songTitle.innerText = song.title_short
+            songAlbum.innerText = song.album.title
+
+            // resets current time
+            const currTime = document.querySelector(".player .currentTime")
+            currTime.innerText = "00:00"
+
+            // adds song duration
+            const duration = document.querySelector(".player .duration")
+            const minutes = "0" + Math.floor(song.duration / 60)
+            const seconds = "0" + Math.floor(song.duration % 60)
+
+            duration.innerText = minutes.slice(-2) + ":" + seconds.slice(-2)
+
+            // that's when the audio tag receives the source and it's ready to play()
+            audio.src = song.preview
+        }
+
+        const handleChangeVolume = (event) => { // function triggered by the onchange event of the volume's range input 
+            const rangeValue = event.target.value
+            const volume = rangeValue / 100
+
+            // audio.volume = volume // affetcs the audio element's volume
+
+            localStorage.setItem("prevVolume", rangeValue) // set chosen volume value in localStorage for later use
+        }
+
+        // manages the movement of the progress bar, gets called by the audio.ontimeupdate
+        const handleProgressBarUpdate = (ended) => {
+            const progressBar = document.querySelector(".progress-bar") // grabs progress bar div
+            const percentage = (audio.currentTime / audio.duration) * 100 // computes percentage value
+
+            progressBar.style.width = percentage.toString() + "%" // applies the percentace as width of the progress bar
+
+            const currTime = document.querySelector(".player .currentTime")
+
+            const minutes = "0" + Math.floor(audio.currentTime / 60)
+            const seconds = "0" + Math.floor(audio.currentTime)
+
+            currTime.innerText = minutes.slice(-2) + ":" + seconds.slice(-2) // updates current time
+        }
+
+        const handleProgressBarClick = (event) => {
+            // fired after clicking the progress-bar
+
+            const elem = event.currentTarget.firstElementChild;
+            const percentage = parseInt((event.offsetX / event.currentTarget.clientWidth) * 100);
+            // calculates where you clicked in relation to the total width of the div (clientWidth)
+
+            elem.style.width = percentage.toString() + "%"; // updates the bar with the new position
+            elem.setAttribute("aria-valuenow", percentage.toString());
+
+            audio.currentTime = (percentage / 100) * audio.duration; // moves song time depending on where the progress-bar was clicked
+        };
+
+        const handlePlay = () => {
+            if (audio.paused) { // when audio is not playing
+                playBtn.src = "./assets/img/playerbuttons/Pause.png"
+                audio.play()
+            } else { // when audio is already playing
+                playBtn.src = "./assets/img/playerbuttons/Play.png"
+                audio.pause()
+            }
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+
+            audio.ontimeupdate = () => handleProgressBarUpdate() // triggered by the song progressing, on every second or so
+            // audio.addEventListener("timeupdate", () => handleProgressBarUpdate())
+            audio.onended = () => handleProgressBarUpdate(true); // triggered when the song ends, passing true as a parameter to reset the progress bar at the end
+
+            const progressBar = document.querySelector(".progress"); // grabs the .progress container
+            progressBar.onclick = (event) => handleProgressBarClick(event); // attaches an onclick event on the progress bar to fire handleProgressBarClick upon clicking
+
+            playBtn.onclick = () => handlePlay() // click on the play button
+
+            // input.onclick = () => 
+            // input.addEventListener("click", () => {})
+
+            const volumeRange = document.querySelector("input[type='range'") // volume input
+            volumeRange.onchange = (event) => handleChangeVolume(event) // triggers a function when changed
+            const storageVolume = localStorage.getItem("prevVolume") // gets the volume from the localStorage
+            console.log('Volume')
+            console.log(storageVolume)
+            if (storageVolume) { // if a previous volume is found
+                volumeRange.value = storageVolume // changes the position of the range input
+                audio.volume = storageVolume / 100 // applies the previous volume when the page loads
+            }
+
+        })
+
+        const albumCard = (song) => {
+            const row = document.querySelector("#section-tow")
+
+            const card = `<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 px-1 mb-2">
+                    <div class="card pt-2 rp-card">
+                        <img class="recent-ply-card-img ml-3 pl-2"
+                            src="${song.album.cover_medium}"
+                            alt="Card image cap">
+                        <div class="card-body card-text-paragraph">
+                            <p class="pb-0 mb-1">${song.title}</p>
+                            <small><a href="./Album.html?AlbumId=${song.album.id}">${song.album.title}</a></small>
+                        </div>
+                        <div class="details">
+                            <div class="center">
+                                <p>In here you can find all the infomation you want to know abut the Artist or the
+                                    Album. </p>
+                                <ul>
+                                    <li><a href="#"><i class="bi bi-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="bi bi-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+            </div>`
+            row.innerHTML += card
+        }
+
+        const getSongsFromArr = () => {
+
+            const arrOfPromises = rockArtists.map(artist => fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=" + artist).then(response => response.json()))
+
+            // console.log(arrOfPromises)
+            console.log('sdsdd')
+            // [response.json(),response.json(),response.json(),response.json()]
+            // [Promise, Promise, Promise, Promise, Promise, Promise, Promise, Promise].then(finished => alert(finished))
+
+            const row = document.querySelector("#section-tow")
+
+            // const reducer = (acc, current) => acc.concat(...current)
+            const reducer = (acc, current) => [...acc, ...current.slice(0, 4)]
+
+            Promise.all(arrOfPromises)
+                .then(arrOfData => {
+
+                    // console.log("PROMISE ALL RESULTS: ", arrOfData)
+                    row.innerHTML = ""
+
+
+                    arrOfData
+                        // [{data: Array(25)}, {data: [.....]}, {data: [.....]}, {data: [.....]}]
+                        .map(obj => obj.data)
+                        // newArray [[{ songs }, { songs }, { songs }, { songs }], [{ songs }, { songs }, { songs }, { songs }], .....]
+                        .reduce(reducer, [])
+                        // newArray [{ songs }, { songs }, { songs }, { songs }, { songs }, { songs }, ....]
+                        .forEach(song => {
+                            // console.log(song)
+                            albumCard(song)
+                            // setPlayerSong(song)
+                            // col.onclick = () => setPlayerSong(song)
+                        })
+                })
+        }
+
+
+        window.onload = () => {
+            getSongsFromArr()
+        };
+
+
+
+
         const albumApi = () => {
             return fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem%50%lil%wayn")
             // return fetch(`https://striveschool-api.herokuapp.com/api/deezer/album?id=${random}`)
@@ -944,12 +1148,11 @@
                         card.innerHTML = `<div class="card card-morning-2 d-flex m-0 mb-2 mr-auto first-div-card-styles">
                         <div class="d-flex align-items-center">
                             <div class="d-flex align-items-center justify-content-center">
-                                <a href="./Album.html?id=${id}">
-                                    <img class="" src="${img}" height="78px" alt="Card image cap"
-                                        style="width: auto; background-size: contain;">
-                                </a>
+                            
+                                <img class="" src="${img}" height="78px" alt="Card image cap"
+                                    style="width: auto; background-size: contain;">
                             </div>
-                            <a href="./Album.html?id=${id}">
+                            <a href="./Album.html?AlbumId=${id}">
                                 <p class="m-0 pl-3 font-weight-light mycardtext">${title}</p>
                             </a>
                         </div>
@@ -968,6 +1171,8 @@
         displayAlbums()
 
     </script>
+
+
 
     <!-- search function -->
     <script>
@@ -991,10 +1196,10 @@
                                 src="${song.album.cover_medium}"
                                 alt="Card image cap">
                             <div class="card-body card-text-paragraph">
-                                <a href="./Album.html?id=${song.album.id}">
+                                <a href="./Album.html?AlbumId=${song.album.id}">
                                 <p class="pb-0 mb-1">${song.title} </p>
                                 </a>
-                                <a href="./Artist.html?id=${song.artist.id}">
+                                <a href="./Artist.html?ArtistId=${song.artist.id}">
                                 <small>${song.artist.name}</small>
                                 </a>
                             </div>
@@ -1029,6 +1234,7 @@
 
                         searchArea.innerHTML += searchItemCards(song)
                         console.log(song)
+
                     })
                 })
             isLoading(false)

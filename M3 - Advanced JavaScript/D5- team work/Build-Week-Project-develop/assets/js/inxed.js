@@ -95,8 +95,8 @@ function applyTheme(theme) {
     let slideIconNext = document.querySelector('.slide-next button i')
     let modeIconLight = document.querySelector('.bi-sun-fill')
     let modeIconDark = document.querySelector('.bi-moon-fill')
-    let Nodefooter = document.querySelector('footer')
-    let NodefooterText = document.querySelectorAll('footer small')
+    // let Nodefooter = document.querySelector('footer')
+    let NodefooterText = document.querySelectorAll('.bg-container span')
     let timedisplyDark = document.querySelector('.bi-clock')
     let timedisplyLight = document.querySelector('.bi-clock-fill')
 
@@ -127,7 +127,7 @@ function applyTheme(theme) {
 
         timedisplyLight.classList.remove('display')
         timedisplyDark.classList.add('display')
-        Nodefooter.classList.add('footer-light')
+        // Nodefooter.classList.add('footer-light')
         modeIconLight.classList.add('mode-Icon')
         slideIconNext.classList.add('slideIcon-light')
         slideIconBack.classList.add('slideIcon-light')
@@ -162,7 +162,7 @@ function applyTheme(theme) {
 
         timedisplyLight.classList.add('display')
         timedisplyDark.classList.remove('display')
-        Nodefooter.classList.remove('footer-light')
+        // Nodefooter.classList.remove('footer-light')
         modeIconLight.classList.remove('mode-Icon')
         slideIconNext.classList.remove('slideIcon-light')
         slideIconBack.classList.remove('slideIcon-light')
