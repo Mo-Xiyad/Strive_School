@@ -110,7 +110,11 @@
 
                 if (response.ok) {
 
-                    console.log(response.json())
+                    // console.log(response.json())
+                    const responseEvent = await response.json()
+                    alert("Appointment created successfully with an id of " + responseEvent._id)
+                    // window.location.assign("/")  //  Here i can provide a path where it should go after the post happen
+                    window.location.reload()
 
                 }
 
