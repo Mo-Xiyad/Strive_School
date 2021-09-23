@@ -935,7 +935,8 @@
             // audio.src = song.preview
             playBtn.src = "./assets/img/playerbuttons/Play.png" // we need to change the icon state since the song will be playing when this function runs
 
-            localStorage.setItem("songId", song.id) // setting the clicked song id into the localStorage (needed to retrieve the last chosen song upon fetching -below-)
+            // localStorage.setItem("songId", song.id) // setting the clicked song id into the localStorage (needed to retrieve the last chosen song upon fetching -below-)
+            // console.log(song)
             setPlayerInfos(song) // this function will populate the information of the player (img, title, album, son duration etc)
             audio.play() // triggers the audio to play (audio tag received the src from within setPlayerInfos)
         }
@@ -968,6 +969,7 @@
 
             // that's when the audio tag receives the source and it's ready to play()
             audio.src = song.preview
+            // console.log(audio)
         }
 
         const handleChangeVolume = (event) => { // function triggered by the onchange event of the volume's range input 
@@ -994,18 +996,18 @@
             currTime.innerText = minutes.slice(-2) + ":" + seconds.slice(-2) // updates current time
         }
 
-        const handleProgressBarClick = (event) => {
-            // fired after clicking the progress-bar
+        // const handleProgressBarClick = (event) => {
+        //     // fired after clicking the progress-bar
 
-            const elem = event.currentTarget.firstElementChild;
-            const percentage = parseInt((event.offsetX / event.currentTarget.clientWidth) * 100);
-            // calculates where you clicked in relation to the total width of the div (clientWidth)
+        //     const elem = event.currentTarget.firstElementChild;
+        //     const percentage = parseInt((event.offsetX / event.currentTarget.clientWidth) * 100);
+        //     // calculates where you clicked in relation to the total width of the div (clientWidth)
 
-            elem.style.width = percentage.toString() + "%"; // updates the bar with the new position
-            elem.setAttribute("aria-valuenow", percentage.toString());
+        //     elem.style.width = percentage.toString() + "%"; // updates the bar with the new position
+        //     elem.setAttribute("aria-valuenow", percentage.toString());
 
-            audio.currentTime = (percentage / 100) * audio.duration; // moves song time depending on where the progress-bar was clicked
-        };
+        //     audio.currentTime = (percentage / 100) * audio.duration; // moves song time depending on where the progress-bar was clicked
+        // };
 
         const handlePlay = () => {
             if (audio.paused) { // when audio is not playing
@@ -1015,6 +1017,41 @@
                 playBtn.src = "./assets/img/playerbuttons/Play.png"
                 audio.pause()
             }
+        }
+
+        const albumCard = (song) => {
+            const row = document.querySelector("#section-tow")
+
+            const card = `<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 px-1 mb-2">
+                    <div class="card pt-2 rp-card">
+                        <img class="recent-ply-card-img ml-3 pl-2"
+                            src="${song.album.cover_medium}"
+                            alt="Card image cap">
+                        <div class="card-body card-text-paragraph">
+                            <p class="pb-0 mb-1">${song.title}</p>
+                            <small><a href="./Album.html?AlbumId=${song.album.id}">${song.album.title}</a></small>
+                        </div>
+                        <div class="details">
+                            <div class="center">
+                                <p>In here you can find all the infomation you want to know abut the Artist or the
+                                    Album. </p>
+                                <ul>
+                                    <li><a href="#"><i class="bi bi-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="bi bi-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+            </div>`
+            row.innerHTML += card
+
+
+            const col = row.querySelector('div.col-12')
+            console.log(col)
+
+            col.onclick = () => setPlayerSong(song)
+
         }
 
         window.addEventListener("DOMContentLoaded", () => {
@@ -1043,40 +1080,14 @@
 
         })
 
-        const albumCard = (song) => {
-            const row = document.querySelector("#section-tow")
 
-            const card = `<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 px-1 mb-2">
-                    <div class="card pt-2 rp-card">
-                        <img class="recent-ply-card-img ml-3 pl-2"
-                            src="${song.album.cover_medium}"
-                            alt="Card image cap">
-                        <div class="card-body card-text-paragraph">
-                            <p class="pb-0 mb-1">${song.title}</p>
-                            <small><a href="./Album.html?AlbumId=${song.album.id}">${song.album.title}</a></small>
-                        </div>
-                        <div class="details">
-                            <div class="center">
-                                <p>In here you can find all the infomation you want to know abut the Artist or the
-                                    Album. </p>
-                                <ul>
-                                    <li><a href="#"><i class="bi bi-facebook" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="bi bi-twitter" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-            </div>`
-            row.innerHTML += card
-        }
 
         const getSongsFromArr = () => {
 
             const arrOfPromises = rockArtists.map(artist => fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=" + artist).then(response => response.json()))
 
             // console.log(arrOfPromises)
-            console.log('sdsdd')
+            // console.log('sdsdd')
             // [response.json(),response.json(),response.json(),response.json()]
             // [Promise, Promise, Promise, Promise, Promise, Promise, Promise, Promise].then(finished => alert(finished))
 
