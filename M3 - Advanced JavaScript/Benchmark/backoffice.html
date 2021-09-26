@@ -473,6 +473,7 @@
             event.preventDefault();
 
             const movieId = new URLSearchParams(window.location.search).get('movieId')
+            console.log(movieId)
 
             const myHeaders = new Headers();
             myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTRiMjFlNjRiYjUzZDAwMTViMTllZDYiLCJpYXQiOjE2MzIzMTM4MzAsImV4cCI6MTYzMzUyMzQzMH0.TlCoWBwSkaUXG_HyFMfAQnvBaxp9w-P3yR9s7r6R1yE");
@@ -483,12 +484,21 @@
             const endpoint = movieId ? url + movieId : url
             console.log(movieId)
 
+            const data = {
+                name: document.querySelector('#edit-name').value,
+                description: document.querySelector('#edit-description').value,
+                category: document.querySelector('.edit-movie-form').value,
+                imageUrl: document.querySelector('#edit-imageUrl').value
+
+            }
+
             try {
-                const response = await fetch(endpoint, {
+                const response = await fetch(url + movieId, {
                     method: "PUT",
-                    body: JSON.stringify(movieData),
+                    body: JSON.stringify(data),
                     headers: myHeaders,
                 })
+                console.log('-------')
                 console.log('fetch')
                 if (response.ok) {
                     const data = await response.json()
