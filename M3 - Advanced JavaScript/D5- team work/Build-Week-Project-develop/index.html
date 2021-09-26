@@ -935,7 +935,7 @@
             // audio.src = song.preview
             playBtn.src = "./assets/img/playerbuttons/Play.png" // we need to change the icon state since the song will be playing when this function runs
 
-            // localStorage.setItem("songId", song.id) // setting the clicked song id into the localStorage (needed to retrieve the last chosen song upon fetching -below-)
+            localStorage.setItem("songId", song.id) // setting the clicked song id into the localStorage (needed to retrieve the last chosen song upon fetching -below-)
             // console.log(song)
             setPlayerInfos(song) // this function will populate the information of the player (img, title, album, son duration etc)
             audio.play() // triggers the audio to play (audio tag received the src from within setPlayerInfos)

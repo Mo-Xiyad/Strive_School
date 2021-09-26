@@ -28,6 +28,12 @@
             -webkit-box-shadow: 1px 1px 20px 10px rgba(102, 102, 102, 0.07);
             box-shadow: 1px 1px 20px 10px rgba(102, 102, 102, 0.07);
         }
+
+        img.img-fluid {
+            height: 150px !important;
+            width: 300px;
+            object-fit: cover;
+        }
     </style>
 </head>
 
@@ -107,6 +113,7 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- Edit Movie infomation -->
                 <div class="col-6 col-md-3">
                     <div class="card text-white bg-dark mb-3 mt-3" style="max-width: 18rem;">
@@ -115,10 +122,16 @@
                             <p class="card-text">When you are creating new movies it is adviced that you add the new
                                 moive to
                                 correct genre</p>
+                            <select class="custom-select custom-select-sm filtter-option">
+                                <option selected value="Action">Action</option>
+                                <option value="sifi">sifi</option>
+                                <option value="Drama">Drama</option>
+                                <option value="Thriller">Thriller</option>
+                            </select>
                         </div>
                         <div class="card-header d-flex justify-content-center">
-                            <button type="button" class="btn btn-danger font-weight-bold " data-toggle="modal"
-                                data-target="#exampleModal" data-whatever="@mdo">Edit
+                            <button type="button" class="btn btn-danger font-weight-bold "
+                                onclick="showMoviesForEditandDelete()">Edit
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-pencil ml-2" viewBox="0 0 16 16">
                                     <path
@@ -128,6 +141,7 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- Delete Movies -->
                 <div class="col-6 col-md-3">
                     <div class="card text-white bg-dark mb-3 mt-3" style="max-width: 18rem;">
@@ -136,10 +150,16 @@
                             <p class="card-text">When you are creating new movies it is adviced that you add the new
                                 moive to
                                 correct genre</p>
+                            <select class="custom-select custom-select-sm delete-option">
+                                <option selected value="Action">Action</option>
+                                <option value="sifi">sifi</option>
+                                <option value="Drama">Drama</option>
+                                <option value="Thriller">Thriller</option>
+                            </select>
                         </div>
                         <div class="card-header d-flex justify-content-center">
-                            <button type="button" class="btn btn-danger font-weight-bold " data-toggle="modal"
-                                data-target="#exampleModal" data-whatever="@mdo">Delete
+                            <button type="button" class="btn btn-danger font-weight-bold "
+                                onclick="showMoviesForDelete()">Delete
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-trash ml-2" viewBox="0 0 16 16">
                                     <path
@@ -216,7 +236,53 @@
                 </div>
             </div>
 
-            <!--  -->
+            <!--  display editing <ovies-->
+            <div id="edit-Movies" class="container-fluid text-white px-lg-5">
+
+                <div id="editmovieID" class="row justify-content-center d-none">
+                    <div class="col-10">
+
+                        <form onsubmit="editMovie(event)">
+
+                            <div class="form-group">
+                                <label class="col-form-label" for="edit-name">Movie Name</label>
+                                <input id="edit-name" type="text" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-form-label" for="edit-description">Description</label>
+                                <textarea id="edit-description" type="text" class="form-control"></textarea>
+
+                            </div>
+
+                            <select class="custom-select custom-select-sm edit-movie-form">
+                                <option selected value="Action">Action</option>
+                                <option value="sifi">sifi</option>
+                                <option value="Drama">Drama</option>
+                                <option value="Thriller">Thriller</option>
+                            </select>
+
+                            <div class="form-group">
+                                <label class="col-form-label" for="edit-imageUrl">Image url</label>
+                                <input id="edit-imageUrl" type="text" class="form-control">
+                            </div>
+
+
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-secondary">Update</button>
+                                <button type="button" class="btn btn-secondary"
+                                    onclick="window.location.assign('./backoffice.html')">Close</button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+
 
         </div>
 
@@ -268,6 +334,7 @@
         crossorigin="anonymous"></script>
 
     <script>
+
         const createMovie = async (event) => {
             event.preventDefault();
 
@@ -283,16 +350,12 @@
 
             const method = movieId ? "PUT" : "POST"
 
-            // category: document.querySelector('#category').value,
             const movieData = {
                 name: document.querySelector('#name').value,
                 description: document.querySelector('#description').value,
                 category: document.querySelector('.genre-option').value,
-                imageUrl: document.querySelector('#imageUrl').value,
                 imageUrl: document.querySelector('#imageUrl').value
             }
-
-            // const selectedOption = document.querySelector('.genre-option').value
 
             try {
                 const response = await fetch(endpoint, {
@@ -312,14 +375,136 @@
         }
 
 
+        const showMoviesForEditandDelete = async (event) => {
+            const url = "https://striveschool-api.herokuapp.com/api/movies/"
+
+            const myHeaders = new Headers();
+            myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTRiMjFlNjRiYjUzZDAwMTViMTllZDYiLCJpYXQiOjE2MzIzMTM4MzAsImV4cCI6MTYzMzUyMzQzMH0.TlCoWBwSkaUXG_HyFMfAQnvBaxp9w-P3yR9s7r6R1yE");
+            myHeaders.append("Content-Type", "application/json");
+
+            const genreEdit = document.querySelector('.filtter-option').value
+            const genreDelete = document.querySelector('.delete-option').value
+
+            try {
+
+                const response = await fetch(url + genreEdit, {
+                    headers: myHeaders,
+                })
+                if (response.ok) {
+                    const data = await response.json()
+                    // console.log(data)
+
+                    const container = document.querySelector('#edit-Movies')
+                    container.classList.add('mt-4')
+
+                    container.innerHTML = ''
+
+                    const heading = document.createElement('h4')
+                    heading.innerHTML = `All available movies based on your search`
+                    heading.classList.add('mt-5', 'mb-3', 'font-bold')
+                    container.appendChild(heading)
+
+                    const row = document.createElement('div')
+                    row.classList.add('row', 'mx-n1')
+                    // console.log(data)
+
+                    data.forEach(moive => {
+
+                        row.innerHTML += ` <div class="col-2 px-1 my-2">
+                                <img src="${moive.imageUrl}" class="img-fluid" />
+                                    
+                                    <button type="button" class="btn btn-dark"> <a href="./backoffice.html?movieId=${moive._id}&?genreID=${moive.category}"><i class="bi bi-pencil"></i></a> </button>
+                             
+                                </div>`
+
+                        container.appendChild(row)
+                    })
+
+                }
+                console.log('inside the showMoviesForEdit() function')
+            } catch (err) {
+
+            }
+        }
+
+
+        const editMovieData = async () => {
+            const movieId = new URLSearchParams(window.location.search).get('movieId')
+            const genreID = new URLSearchParams(window.location.search).get('?genreID')
+
+            const container = document.querySelector('#editmovieID')
+
+
+            const myHeaders = new Headers();
+            myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTRiMjFlNjRiYjUzZDAwMTViMTllZDYiLCJpYXQiOjE2MzIzMTM4MzAsImV4cCI6MTYzMzUyMzQzMH0.TlCoWBwSkaUXG_HyFMfAQnvBaxp9w-P3yR9s7r6R1yE");
+            myHeaders.append("Content-Type", "application/json");
+
+            const url = "https://striveschool-api.herokuapp.com/api/movies/"
+
+            if (movieId) {
+                // console.log('hello')
+                container.classList.remove('d-none')
+
+                try {
+                    const response = await fetch(url + genreID, {
+                        headers: myHeaders,
+                    })
+                    if (response.ok) {
+                        const data = await response.json()
+
+                        const movie = data.find(x => x._id === movieId)
+                        // console.log(movie.name)
+                        // console.log(movie.category)
+
+                        document.querySelector('#edit-name').value = movie.name
+                        document.querySelector('#edit-description').value = movie.description
+                        document.querySelector('.edit-movie-form').value = movie.category
+                        document.querySelector('#edit-imageUrl').value = movie.imageUrl
+
+                    }
+                } catch (err) {
+                    console.log(err)
+                }
+
+            }
+        }
+
+        const editMovie = async (event) => {
+            event.preventDefault();
+
+            const movieId = new URLSearchParams(window.location.search).get('movieId')
+
+            const myHeaders = new Headers();
+            myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTRiMjFlNjRiYjUzZDAwMTViMTllZDYiLCJpYXQiOjE2MzIzMTM4MzAsImV4cCI6MTYzMzUyMzQzMH0.TlCoWBwSkaUXG_HyFMfAQnvBaxp9w-P3yR9s7r6R1yE");
+            myHeaders.append("Content-Type", "application/json");
+
+            const url = "https://striveschool-api.herokuapp.com/api/movies/"
+
+            const endpoint = movieId ? url + movieId : url
+            console.log(movieId)
+
+            try {
+                const response = await fetch(endpoint, {
+                    method: "PUT",
+                    body: JSON.stringify(movieData),
+                    headers: myHeaders,
+                })
+                console.log('fetch')
+                if (response.ok) {
+                    const data = await response.json()
+                    window.location.reload()
+                }
+            } catch (err) {
+                console.log(err)
+
+            }
+        }
+
+        window.onload = () => {
+            editMovieData()
+        }
+
     </script>
 </body>
-
-<!-- "name":
-"description":
-"category":
-"imageUrl" -->
-
-
 
 </html>
