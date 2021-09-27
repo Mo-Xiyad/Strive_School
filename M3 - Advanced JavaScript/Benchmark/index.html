@@ -31,6 +31,16 @@
             box-shadow: 1px 0px 40px 2px rgba(240, 255, 252, 0.29);
             border: none !important;
         }
+
+        /* .scroller {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: scroll;
+        }
+
+        .scroller::-webkit-scrollbar {
+            display: none;
+        } */
     </style>
 
 </head>
@@ -590,6 +600,7 @@
                 const data = await response.json();
 
                 let row = document.getElementById('one')
+                row.classList.add('scroller')
                 row.innerHTML = ''
 
                 data.forEach(movie => {
@@ -611,6 +622,7 @@
                 const data = await response.json();
 
                 let row = document.getElementById('two')
+                row.classList.add('scroller')
                 row.innerHTML = ''
 
                 data.forEach(movie => {
@@ -631,6 +643,7 @@
                 const data = await response.json();
 
                 let row = document.getElementById('three')
+                row.classList.add('scroller')
                 row.innerHTML = ''
 
                 data.forEach(movie => {
@@ -651,6 +664,7 @@
                 const data = await response.json();
 
                 let row = document.getElementById('four')
+                row.classList.add('scroller')
                 row.innerHTML = ''
                 console.log(data)
                 data.forEach(movie => {
